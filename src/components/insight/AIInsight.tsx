@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
@@ -30,7 +30,7 @@ export default function AIInsight({ insights }: AIInsightProps) {
   const [chatMessages, setChatMessages] = useState<{role: 'user' | 'ai'; content: string}[]>([
     {
       role: 'ai',
-      content: 'Hi there! I\'m Yi\'s AI Insight assistant. I analyze writing patterns, themes, and emotional tones in Yi\'s work. Ask me about trends in Yi\'s writing, creative processes, or how to gain deeper insights into thought patterns. How can I help you today?'
+      content: "Hi there! I'm Yi's AI Insight assistant. I analyze writing patterns, themes, and emotional tones in Yi's work. Ask me about trends in Yi's writing, creative processes, or how to gain deeper insights into thought patterns. How can I help you today?"
     }
   ]);
   
@@ -383,7 +383,7 @@ export default function AIInsight({ insights }: AIInsightProps) {
             >
               {/* Chat header */}
               <div className="bg-purple-600 text-white p-3 flex justify-between items-center">
-                <h3 className="font-medium">Yi's AI Thinking Assistant</h3>
+                <h3 className="font-medium">Yi&apos;s AI Thinking Assistant</h3>
                 <button 
                   className="text-white hover:bg-purple-700 rounded-full p-1"
                   onClick={() => setChatOpen(false)}
