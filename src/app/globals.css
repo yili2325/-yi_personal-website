@@ -1,26 +1,529 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral+SC:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+@import "@fontsource/manrope";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  
+  /* Custom color palette */
+  --lavender: #C8B6FF;
+  --soft-blue: #7B9FFF;
+  --rose-pink: #FFB6C1;
+  --pearl-white: #F8F8FF;
+  --cloud-grey: #B0B9C6;
 }
 
-@theme inline {
+/* Global variables */
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Manrope', var(--font-geist-sans), sans-serif;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Custom styles for our universe */
+.universe {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #121212 0%, #050505 100%);
+  transition: background-position 0.3s ease-out;
+  background-size: 120% 120%;
+  background-position: center center;
+  background-attachment: fixed;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(123, 159, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, rgba(200, 182, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.05) 0%, transparent 30%),
+    radial-gradient(ellipse at center, #121212 0%, #050505 100%);
+}
+
+/* Code matrix background effect for developer page */
+.bg-code-matrix {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-image: 
+    linear-gradient(0deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: matrixScroll 20s linear infinite;
+  overflow: hidden;
+}
+
+.bg-code-matrix::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='0' y='15' font-family='monospace' font-size='10' fill='rgba(6, 182, 212, 0.15)'%3E01%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: matrixFade 10s linear infinite;
+}
+
+/* Creator pattern background effect */
+.bg-creator-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(244, 114, 182, 0.05) 0%, transparent 15%),
+    radial-gradient(circle at 80% 70%, rgba(251, 113, 133, 0.05) 0%, transparent 15%),
+    radial-gradient(circle at 50% 50%, rgba(244, 114, 182, 0.03) 0%, transparent 25%);
+  animation: creatorPatternRotate 30s linear infinite;
+  overflow: hidden;
+}
+
+.bg-creator-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='15' cy='15' r='1' fill='rgba(244, 114, 182, 0.1)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: creatorPatternPulse 10s ease-in-out infinite;
+}
+
+/* Insight pattern background effect */
+.bg-insight-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-image: 
+    radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 70% 60%, rgba(99, 102, 241, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 30%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z' stroke='rgba(139, 92, 246, 0.03)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, 100px 100px;
+  animation: insightPatternRotate 40s linear infinite;
+  overflow: hidden;
+}
+
+.bg-insight-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1' fill='rgba(139, 92, 246, 0.05)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: insightPatternPulse 15s ease-in-out infinite;
+}
+
+/* Vital Orbit pattern background effect */
+.bg-vital-orbit-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(52, 211, 153, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 30%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' stroke='rgba(52, 211, 153, 0.03)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, 100px 100px;
+  animation: vitalOrbitPatternRotate 40s linear infinite;
+  overflow: hidden;
+}
+
+.bg-vital-orbit-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1' fill='rgba(52, 211, 153, 0.05)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: vitalOrbitPatternPulse 12s ease-in-out infinite;
+}
+
+@keyframes vitalOrbitPatternRotate {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%, 100% 100%, 100% 100%, 100px 100px;
+  }
+}
+
+@keyframes vitalOrbitPatternPulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Pathfinder pattern background effect */
+.bg-pathfinder-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.03) 0%, transparent 30%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 50 L50 20 L80 50 L50 80 Z' stroke='rgba(37, 99, 235, 0.03)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, 100px 100px;
+  animation: pathfinderPatternRotate 40s linear infinite;
+  overflow: hidden;
+}
+
+.bg-pathfinder-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(59, 130, 246, 0.05)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10,50 L90,50 M50,10 L50,90' stroke='rgba(59, 130, 246, 0.02)' stroke-width='1' stroke-dasharray='5,5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: pathfinderPatternPulse 15s ease-in-out infinite;
+}
+
+@keyframes pathfinderPatternRotate {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%, 100% 100%, 100% 100%, 100px 100px;
+  }
+}
+
+@keyframes pathfinderPatternPulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Product Builder pattern background effect */
+.bg-product-builder-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 30%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 L80 20 L80 80 L20 80 Z' stroke='rgba(245, 158, 11, 0.03)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, 100px 100px;
+  animation: productBuilderPatternRotate 40s linear infinite;
+  overflow: hidden;
+}
+
+.bg-product-builder-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(168, 85, 247, 0.05)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' stroke='rgba(245, 158, 11, 0.02)' stroke-width='1' stroke-dasharray='5,5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: productBuilderPatternPulse 15s ease-in-out infinite;
+}
+
+@keyframes productBuilderPatternRotate {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%, 100% 100%, 100% 100%, 100px 100px;
+  }
+}
+
+@keyframes productBuilderPatternPulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes insightPatternRotate {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%, 100% 100%, 100% 100%, 100px 100px;
+  }
+}
+
+@keyframes insightPatternPulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes creatorPatternRotate {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes creatorPatternPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes matrixScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes matrixFade {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.planet {
+  border-radius: 50%;
+  position: absolute;
+  transform-origin: center;
+  transition: transform 0.3s ease-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pearl-white);
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: planetPulse 4s infinite ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Create stylized gradient-gloss effect with pseudo-elements */
+.planet::before {
+  content: '';
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(ellipse at 30% 25%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.7;
+  mix-blend-mode: soft-light;
+  transform: rotate(-15deg);
+}
+
+.planet::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  background: 
+    radial-gradient(ellipse at 75% 75%, rgba(0, 0, 0, 0.4) 0%, transparent 70%),
+    radial-gradient(circle at 25% 10%, rgba(255, 255, 255, 0.2) 0%, transparent 30%);
+  pointer-events: none;
+  opacity: 0.8;
+  mix-blend-mode: normal;
+}
+
+@keyframes planetPulse {
+  0% {
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
+    filter: brightness(1.2);
+  }
+  100% {
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+    filter: brightness(1);
+  }
+}
+
+.planet:hover {
+  transform: scale(1.1);
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
+  animation-play-state: paused;
+}
+
+.planet.creator {
+  background: linear-gradient(135deg, #8a6fe6, #5d4a9c);
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg, #8a6fe6, #5d4a9c);
+}
+
+.planet.developer {
+  background: linear-gradient(135deg, var(--soft-blue), #5a7cdb);
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg, var(--soft-blue), #5a7cdb);
+}
+
+.planet.writer {
+  background: linear-gradient(135deg, var(--rose-pink), #ff8fa3);
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg, var(--rose-pink), #ff8fa3);
+}
+
+.planet.insight {
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg, #a78bfa, #8b5cf6);
+}
+
+.planet.vital-orbit {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg, #34d399, #10b981);
+}
+
+.planet.pathfinder {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.planet.product-builder {
+  background: linear-gradient(135deg, #f59e0b, #a855f7);
+  background-image: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg, #f59e0b, #a855f7);
+}
+
+.center-avatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+  animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.tagline {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: var(--pearl-white);
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  max-width: 90%;
+  line-height: 1.5;
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Bloom effect */
+.bloom {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }

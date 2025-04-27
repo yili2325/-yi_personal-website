@@ -1,0 +1,10 @@
+<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="75" cy="75" r="75" fill="url(#gradient)" />
+  <defs>
+    <radialGradient id="gradient" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#7B9FFF" />
+      <stop offset="50%" stop-color="#C8B6FF" />
+      <stop offset="100%" stop-color="#FFB6C1" />
+    </radialGradient>
+  </defs>
+</svg>
