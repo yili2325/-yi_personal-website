@@ -73,7 +73,7 @@ export default function TechEvolution({
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        The tools I've mastered and the cognitive shifts I've experienced
+        The tools I&apos;ve mastered and the cognitive shifts I&apos;ve experienced
       </motion.p>
       
       {/* Tab navigation */}

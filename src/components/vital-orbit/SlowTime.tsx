@@ -1,36 +1,11 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export default function SlowTime() {
-  const [isPlaying, setIsPlaying] = useState(true);
   const gifRef = useRef<HTMLDivElement>(null);
-  
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
-    
-    // This is a placeholder for actual GIF control
-    // In a real implementation, you would use a library to control GIF playback
-    // or use a video element instead of a GIF for better control
-    if (gifRef.current) {
-      const gif = gifRef.current.querySelector('img');
-      if (gif) {
-        if (isPlaying) {
-          // Pause effect by hiding the original and showing a still frame
-          gif.style.opacity = '0';
-          gifRef.current.style.backgroundImage = `url('/vital-orbit/readtime.png')`;
-          gifRef.current.style.backgroundSize = 'cover';
-          gifRef.current.style.backgroundPosition = 'center';
-        } else {
-          // Resume playing
-          gif.style.opacity = '1';
-          gifRef.current.style.backgroundImage = 'none';
-        }
-      }
-    }
-  };
   
   return (
     <motion.section 
@@ -82,12 +57,12 @@ export default function SlowTime() {
             </h2>
             
             <p className="text-xl italic text-emerald-700 mb-6">
-              "This is how I slow down."
+              &quot;This is how I slow down.&quot;
             </p>
             
             <p className="text-gray-600 mb-6 leading-relaxed">
               In a world of constant digital stimulation, I find peace in the tactile experience of turning pages. 
-              Whether it's a book, journal, or sketchpad, the physical act of flipping through paper connects me to a slower rhythm.
+              Whether it&apos;s a book, journal, or sketchpad, the physical act of flipping through paper connects me to a slower rhythm.
             </p>
             
             <p className="text-gray-600 mb-6 leading-relaxed">

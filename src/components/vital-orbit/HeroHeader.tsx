@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export default function HeroHeader() {
   const heartbeatRef = useRef<SVGSVGElement>(null);
@@ -122,7 +121,7 @@ export default function HeroHeader() {
         </h1>
         
         <p className="text-xl md:text-2xl text-emerald-700 mb-8 font-light italic">
-          "I build my mind through my body, and return to myself in motion."
+          &quot;I build my mind through my body, and return to myself in motion.&quot;
         </p>
         
         <div className="h-[60px] mb-8 relative overflow-hidden">
@@ -146,7 +145,7 @@ export default function HeroHeader() {
         </div>
         
         <p className="text-gray-600 mb-8 leading-relaxed">
-          Where I move, give, and return to myself. Physical activity is not just about fitness—it's where I find clarity, purpose, and a deeper connection to my own potential.
+          Where I move, give, and return to myself. Physical activity is not just about fitness—it&apos;s where I find clarity, purpose, and a deeper connection to my own potential.
         </p>
         
         {/* Button removed as requested */}

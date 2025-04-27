@@ -65,16 +65,16 @@ export default function CTAFooter() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h3 className="text-xl font-medium text-emerald-800 mb-4">Let's do something together</h3>
+              <h3 className="text-xl font-medium text-emerald-800 mb-4">Let&apos;s do something together</h3>
               <p className="text-gray-600 mb-4">
-                Whether it's a hike, a climbing session, or a volunteer project, I'm always open to connecting through shared activities.
+                Whether it&apos;s a hike, a climbing session, or a volunteer project, I&apos;m always open to connecting through shared activities.
               </p>
               <div className="flex gap-3">
                 <Link 
                   href="#"
                   className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center gap-2"
                 >
-                  <span>Let's Chat</span>
+                  <span>Let&apos;s Chat</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
                   </svg>
@@ -101,7 +101,7 @@ export default function CTAFooter() {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <p>
-              "Movement is my meditation, service is my connection, and both fuel my creative process."
+              &quot;Movement is my meditation, service is my connection, and both fuel my creative process.&quot;
             </p>
           </motion.div>
         </div>

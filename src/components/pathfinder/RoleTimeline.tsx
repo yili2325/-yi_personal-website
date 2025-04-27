@@ -146,7 +146,7 @@ export default function RoleTimeline({ roles }: RoleTimelineProps) {
                   <h3 className="text-lg font-bold text-blue-800 mb-2">{role.role}</h3>
                   
                   <div className="bg-blue-50 p-3 rounded-lg mb-4 italic text-sm text-blue-700">
-                    "{role.insight}"
+                    &quot;{role.insight}&quot;
                   </div>
                   
                   <p className="text-gray-600 text-sm mb-4">

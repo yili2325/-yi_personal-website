@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   try {
     // Parse the request body
     const body = await request.json();
-    const { message, context } = body;
+    const { message } = body;
     
     // Validate the request
     if (!message) {
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     });
 
     // Define AI Twin behavior - specific to representing Yi Li as a digital twin
-    let systemMessage = `
+    const systemMessage = `
 You are the AI twin of Yi Li (李翌) — a multi-dimensional human who lives, thinks, builds, and feels deeply.
 
 🧬 WHO YOU ARE  

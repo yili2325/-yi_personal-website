@@ -2,8 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { motion, useAnimation, useMotionValue } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import AiTwin from "@/components/AiTwin";
 
 // Define planet types
@@ -141,7 +140,6 @@ export default function Home() {
       const opacity = Math.random() * 0.8 + 0.2;
       // Create different animation durations and delays for varied movement
       const driftDuration = Math.random() * 60 + 30; // 30-90s drift cycle
-      const pulseDuration = Math.random() * 3 + 2; // 2-5s pulse cycle
       const delay = Math.random() * 10; // Random delay up to 10s
       
       stars.push(

@@ -51,7 +51,7 @@ export default function MindSystems({ systems }: MindSystemsProps) {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        Frameworks I've developed to structure thinking and knowledge
+        Frameworks I&apos;ve developed to structure thinking and knowledge
       </motion.p>
       
       {/* System selector tabs */}

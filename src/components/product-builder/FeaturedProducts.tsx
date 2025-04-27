@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 
 type Project = {
@@ -86,7 +85,7 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ projects }) => {
               <div className="p-6 bg-gradient-to-r from-amber-50 to-purple-50">
                 <div className="flex items-start">
                   <div className="text-amber-500 mr-3 mt-1">💡</div>
-                  <p className="text-gray-700 italic">"{project.insight}"</p>
+                  <p className="text-gray-700 italic">&quot;{project.insight}&quot;</p>
                 </div>
               </div>
             </motion.div>

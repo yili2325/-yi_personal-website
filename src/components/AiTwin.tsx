@@ -42,9 +42,7 @@ export default function AiTwin() {
       console.log('Sending message to API...');
       // Call the twin-specific API route
       const response = await axios.post('/api/chat/twin', {
-        message: userMessage,
-        // You can add context here if needed
-        context: {}
+        message: userMessage
       });
       
       console.log('Response received:', response.data);
@@ -62,19 +60,22 @@ export default function AiTwin() {
       };
       
       setMessages((prev) => [...prev, aiMessage]);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error calling AI API:', error);
       
       // Get detailed error message if available
       let errorText = "Sorry, I encountered an error. Please try again later.";
       
-      if (error.response?.data?.error) {
-        errorText = `Error: ${error.response.data.error}`;
-        if (error.response.data.details) {
-          errorText += ` (${error.response.data.details})`;
+      if (typeof error === 'object' && error !== null) {
+        const err = error as { response?: { data?: { error?: string, details?: string } }, message?: string };
+        if (err.response?.data?.error) {
+          errorText = `Error: ${err.response.data.error}`;
+          if (err.response.data.details) {
+            errorText += ` (${err.response.data.details})`;
+          }
+        } else if (err.message) {
+          errorText = `Error: ${err.message}`;
         }
-      } else if (error.message) {
-        errorText = `Error: ${error.message}`;
       }
       
       // Add error message
@@ -160,7 +161,7 @@ export default function AiTwin() {
                   <div className="h-full flex flex-col items-center justify-center text-center text-white/70">
                     <div className="text-4xl mb-4">👋</div>
                     <p className="max-w-xs">
-                      Ask me anything like "What are you thinking about right now?" or "When was your last moment of self-doubt?"
+                      Ask me anything like &quot;What are you thinking about right now?&quot; or &quot;When was your last moment of self-doubt?&quot;
                     </p>
                   </div>
                 ) : (

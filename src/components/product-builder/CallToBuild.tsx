@@ -102,7 +102,7 @@ const CallToBuild: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              I'm always building the next thing.
+              I&apos;m always building the next thing.
             </motion.h2>
             
             <motion.p
@@ -112,8 +112,8 @@ const CallToBuild: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              Whether you're looking to collaborate on a project, need help bringing your idea to life, 
-              or just want to connect with a fellow builder—I'd love to hear from you.
+              Whether you&apos;re looking to collaborate on a project, need help bringing your idea to life, 
+              or just want to connect with a fellow builder—I&apos;d love to hear from you.
             </motion.p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

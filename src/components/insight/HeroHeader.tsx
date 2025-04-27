@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export default function HeroHeader() {
   const [typedText, setTypedText] = useState('');
@@ -97,7 +96,7 @@ export default function HeroHeader() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            <p className="font-light">"{typedText}<span className="animate-pulse">|</span>"</p>
+            <p className="font-light">&quot;{typedText}<span className="animate-pulse">|</span>&quot;</p>
           </motion.div>
         </motion.div>
         

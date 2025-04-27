@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 const HeroSection: React.FC = () => {
   return (
@@ -62,8 +61,8 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            "I write in code and compose in function.<br />
-            Every tool I make is a reflection of how I think."
+            &quot;I write in code and compose in function.<br />
+            Every tool I make is a reflection of how I think.&quot;
           </motion.p>
           
           <motion.div

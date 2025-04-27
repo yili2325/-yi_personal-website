@@ -303,9 +303,9 @@ export default function MotionGallery({ activities }: MotionGalleryProps) {
       >
         <h3 className="text-emerald-800 font-medium mb-2">My Movement Philosophy</h3>
         <p className="text-gray-600 text-sm">
-          I've found that physical structure creates mental clarity. Each activity offers a different lesson: 
+          I&apos;ve found that physical structure creates mental clarity. Each activity offers a different lesson: 
           climbing teaches focus, lifting builds resilience, and golf cultivates patience. 
-          These aren't just hobbies—they're laboratories for personal growth.
+          These aren&apos;t just hobbies—they&apos;re laboratories for personal growth.
         </p>
       </motion.div>
     </motion.section>

@@ -43,7 +43,7 @@ export default function VolunteerSpirit({ activities }: VolunteerSpiritProps) {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        Giving structure to someone else's chaos is also design.
+        Giving structure to someone else&apos;s chaos is also design.
       </motion.p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-3xl mx-auto">
@@ -95,7 +95,7 @@ export default function VolunteerSpirit({ activities }: VolunteerSpiritProps) {
               </div>
               
               <div className="bg-emerald-50 p-3 rounded-lg mb-4 italic text-sm text-emerald-700">
-                "{activity.reflection}"
+                &quot;{activity.reflection}&quot;
               </div>
               
               <div className="flex justify-between items-center">
@@ -125,7 +125,7 @@ export default function VolunteerSpirit({ activities }: VolunteerSpiritProps) {
       >
         <h3 className="text-emerald-800 font-medium mb-2">Future Plans</h3>
         <p className="text-gray-600 text-sm">
-          I'm planning to join a mentorship program for underprivileged youth interested in technology and design.
+          I&apos;m planning to join a mentorship program for underprivileged youth interested in technology and design.
           My goal is to help them build the structural thinking skills that have been so valuable in my own journey.
         </p>
         

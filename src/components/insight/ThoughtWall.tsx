@@ -137,7 +137,7 @@ export default function ThoughtWall({ thoughts }: ThoughtWallProps) {
                 boxShadow: "0 10px 25px -5px rgba(139, 92, 246, 0.1), 0 10px 10px -5px rgba(139, 92, 246, 0.04)"
               }}
             >
-              <p className="text-gray-800 font-serif italic text-sm">"{thought.text}"</p>
+              <p className="text-gray-800 font-serif italic text-sm">&quot;{thought.text}&quot;</p>
             </motion.div>
           ))}
         </AnimatePresence>

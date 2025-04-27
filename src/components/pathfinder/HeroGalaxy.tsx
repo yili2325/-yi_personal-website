@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -29,31 +29,6 @@ const floatingKeywords = [
 export default function HeroGalaxy() {
   const [hoveredNode, setHoveredNode] = useState<number | null>(null);
   const galaxyRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
-  // Handle mouse movement for parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!galaxyRef.current) return;
-      
-      const rect = galaxyRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-      
-      setMousePosition({ x, y });
-    };
-    
-    const galaxyElement = galaxyRef.current;
-    if (galaxyElement) {
-      galaxyElement.addEventListener('mousemove', handleMouseMove);
-    }
-    
-    return () => {
-      if (galaxyElement) {
-        galaxyElement.removeEventListener('mousemove', handleMouseMove);
-      }
-    };
-  }, []);
   
   return (
     <motion.section 
@@ -325,7 +300,7 @@ export default function HeroGalaxy() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          "I'm not defined by roles — I'm shaped by the routes I've walked."
+          &quot;I&apos;m not defined by roles — I&apos;m shaped by the routes I&apos;ve walked.&quot;
         </motion.p>
       </div>
     </motion.section>

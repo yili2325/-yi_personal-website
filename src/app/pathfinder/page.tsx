@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 
 // Components
@@ -287,12 +286,12 @@ export default function PathfinderPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                Every planet I've walked through left a trace in me.
+                Every planet I&apos;ve walked through left a trace in me.
               </motion.h2>
               
               <div className="text-center mb-8">
-                <p className="text-blue-700 mb-2">→ I'm not just here. I've been places.</p>
-                <p className="text-blue-700">→ Let's go somewhere new.</p>
+                <p className="text-blue-700 mb-2">→ I&apos;m not just here. I&apos;ve been places.</p>
+                <p className="text-blue-700">→ Let&apos;s go somewhere new.</p>
               </div>
               
               <div className="flex flex-wrap justify-center gap-4">

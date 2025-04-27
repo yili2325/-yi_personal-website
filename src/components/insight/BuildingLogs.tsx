@@ -122,7 +122,7 @@ export default function BuildingLogs({ logs }: BuildingLogsProps) {
               
               <div className="prose prose-purple max-w-none">
                 <p className="text-gray-700 text-lg italic leading-relaxed">
-                  "{currentLog.content}"
+                  &quot;{currentLog.content}&quot;
                 </p>
               </div>
               
