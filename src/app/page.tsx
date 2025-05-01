@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion, useMotionValue } from "framer-motion";
 import AiTwin from "@/components/AiTwin";
-
+import useMediaQuery from "@/hooks/useMediaQuery";
 // Define planet types
 type PlanetType = {
   id: string;
@@ -18,6 +18,8 @@ type PlanetType = {
   orbitOffset: number;
 };
 
+
+
 export default function Home() {
   const universeRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
@@ -27,13 +29,14 @@ export default function Home() {
   const [dragStartPos, setDragStartPos] = useState({ x: 0, y: 0 });
   const [universeOffset, setUniverseOffset] = useState({ x: 0, y: 0 });
   const [isClient, setIsClient] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 768px)");
   
   // Set isClient to true when component mounts on client
   useEffect(() => {
     setIsClient(true);
   }, []);
   
-  // Define planets
+  // Define planets with responsive sizing
   const planets: PlanetType[] = [
     {
       id: "product-builder",
@@ -41,8 +44,8 @@ export default function Home() {
       icon: "🛠️",
       description: "I write in code and compose in function.",
       color: "product-builder",
-      size: 125,
-      orbitRadius: 260,
+      size: isMobile ? 85 : 125,
+      orbitRadius: isMobile ? 140 : 260,
       orbitSpeed: 0.00009,
       orbitOffset: Math.PI * 0.3,
     },
@@ -52,8 +55,8 @@ export default function Home() {
       icon: "✨",
       description: "I structure thoughts into systems of meaning.",
       color: "insight",
-      size: 110,
-      orbitRadius: 250,
+      size: isMobile ? 75 : 110,
+      orbitRadius: isMobile ? 130 : 250,
       orbitSpeed: 0.00009,
       orbitOffset: Math.PI,
     },
@@ -63,8 +66,8 @@ export default function Home() {
       icon: "🪐",
       description: "Where I move, give, and return to myself.",
       color: "vital-orbit",
-      size: 115,
-      orbitRadius: 310,
+      size: isMobile ? 80 : 115,
+      orbitRadius: isMobile ? 160 : 310,
       orbitSpeed: 0.00007,
       orbitOffset: Math.PI * 1.5,
     },
@@ -74,14 +77,14 @@ export default function Home() {
       icon: "🧭",
       description: "I'm not defined by roles — I'm shaped by the routes I've walked.",
       color: "pathfinder",
-      size: 105,
-      orbitRadius: 340,
+      size: isMobile ? 70 : 105,
+      orbitRadius: isMobile ? 180 : 340,
       orbitSpeed: 0.00006,
       orbitOffset: Math.PI * 0.5,
     },
   ];
 
-  // Handle mouse movement to control universe with parallax effect
+  // Handle mouse/touch movement to control universe with parallax effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging) {
@@ -121,14 +124,49 @@ export default function Home() {
       setIsDragging(false);
     };
 
+    // Touch event handlers for mobile
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isDragging && e.touches[0]) {
+        const touch = e.touches[0];
+        const deltaX = touch.clientX - dragStartPos.x;
+        const deltaY = touch.clientY - dragStartPos.y;
+        
+        setUniverseOffset(prev => ({
+          x: prev.x + deltaX * 0.05,
+          y: prev.y + deltaY * 0.05
+        }));
+        
+        setDragStartPos({ x: touch.clientX, y: touch.clientY });
+      }
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches[0]) {
+        setIsDragging(true);
+        setDragStartPos({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+      }
+    };
+
+    const handleTouchEnd = () => {
+      setIsDragging(false);
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
+    
+    // Add touch event listeners for mobile
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchend", handleTouchEnd);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, [mouseX, mouseY, isDragging, dragStartPos]);
 
@@ -172,7 +210,7 @@ export default function Home() {
     return stars;
   };
 
-  // Calculate planet positions based on orbit
+  // Calculate planet positions based on orbit with responsive adjustments
   const calculatePlanetPosition = (planet: PlanetType) => {
     const now = Date.now();
     const angle = now * planet.orbitSpeed + planet.orbitOffset;
@@ -215,8 +253,8 @@ export default function Home() {
         <Image
           src="/avatar-placeholder.svg"
           alt="Personal Avatar"
-          width={150}
-          height={150}
+          width={isMobile ? 100 : 150}
+          height={isMobile ? 100 : 150}
           className="rounded-full bloom"
           priority
         />
@@ -574,9 +612,11 @@ export default function Home() {
                 <motion.div
                   className="absolute glass p-3 rounded-lg z-20"
                   style={{
-                    top: "110%",
+                    top: isMobile ? "105%" : "110%",
                     width: "max-content",
-                    maxWidth: "200px",
+                    maxWidth: isMobile ? "150px" : "200px",
+                    left: isMobile ? "50%" : "auto",
+                    transform: isMobile ? "translateX(-50%)" : "none",
                   }}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
